@@ -28,11 +28,11 @@ export default async function lastCjsVersion(pkg: string) {
     .filter((v) => /^\d+\.\d+\.\d+$/.test(v))
     .sort((a, b) => {
       const va = a.split('.').map((v) => Number(v))
-      const vb = a.split('.').map((v) => Number(v))
+      const vb = b.split('.').map((v) => Number(v))
 
       if (va[0] > vb[0]) return -1
-      if (va[1] > vb[1]) return -1
-      if (va[2] > vb[2]) return -1
+      if (va[0] === vb[0] && va[1] > vb[1]) return -1
+      if (va[0] === vb[0] && va[1] === vb[1] && va[2] > vb[2]) return -1
 
       return 1
     })
