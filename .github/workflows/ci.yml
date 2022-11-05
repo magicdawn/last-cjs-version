@@ -5,9 +5,8 @@ on:
   - pull_request
 
 jobs:
-  build-app:
+  unit-test:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v3
 
@@ -19,10 +18,7 @@ jobs:
           node-version: 16
           cache: 'pnpm'
 
-      # install deps
       - run: pnpm install
 
-      # test
       - run: pnpm test-cover
-
       - uses: codecov/codecov-action@v3
