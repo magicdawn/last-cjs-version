@@ -14,10 +14,18 @@
 [![npm downloads](https://img.shields.io/npm/dm/last-cjs-version.svg?style=flat-square)](https://www.npmjs.com/package/last-cjs-version)
 [![npm license](https://img.shields.io/npm/l/last-cjs-version.svg?style=flat-square)](http://magicdawn.mit-license.org)
 
+# Why
+
+modules are moving to ES module. But when we want keep using CommonJS, and tired of using async
+dynamic `import()`, u can use this to find last CommonJS version of the module.
+
 ## Install
 
 ```sh
-$ npm i -S last-cjs-version
+$ npm i -g last-cjs-version
+
+# or
+$ pnpm add -g last-cjs-version
 ```
 
 ## cli
