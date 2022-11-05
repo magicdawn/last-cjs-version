@@ -16,6 +16,7 @@ get last cjs version of package
   pkg  package name                                                     [字符串]
 
 选项：
+  -m, --major    major version only                       [布尔] [默认值: false]
   -h, --help     显示帮助信息                                             [布尔]
   -v, --version  显示版本号                                               [布尔]
 

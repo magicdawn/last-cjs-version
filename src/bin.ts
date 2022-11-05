@@ -11,12 +11,24 @@ yargs
           description: 'package name',
           type: 'string',
         })
-        .alias({ h: 'help', v: 'version' })
+        .option('major', {
+          alias: 'm',
+          description: 'major version only',
+          type: 'boolean',
+          default: false,
+        })
     },
     async (argv) => {
       const name = argv.pkg
-      const v = await lastCjsVersion(name)
+      let v = await lastCjsVersion(name)
+
+      if (argv.major) {
+        v = v.split('.')[0]
+      }
+
       console.log(v)
     }
   )
+  .alias({ h: 'help', v: 'version' })
+
   .help().argv

@@ -21,7 +21,7 @@
     "report-cover": "codecov",
     "build": "rm -rf lib; rm tsconfig.tsbuildinfo; tsc",
     "prepublishOnly": "npm run build",
-    "gen-readme": "swig render ./readme/readme.md > README.md && prettier --write README.md"
+    "gen-readme": "swig render ./_readme/readme.md > README.md && prettier --write README.md"
   },
   "repository": {
     "type": "git",
