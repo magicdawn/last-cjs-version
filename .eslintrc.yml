@@ -8,7 +8,52 @@ extends:
   - 'plugin:@typescript-eslint/recommended'
   - 'prettier'
 
+env:
+  node: true
+
 rules:
+  # basic
+  semi: [error, never]
+  quotes: [error, single, { allowTemplateLiterals: true }]
+  eqeqeq: error
+  camelcase: error
+  radix: error
+  yoda: error
+  no-var: error
+  no-const-assign: error
+  comma-dangle: [error, only-multiline]
+
+  # indent use prettier
+  # indent: [error, 2, { SwitchCase: 1 }]
+
+  # brace
+  curly: [error, multi-line]
+  brace-style: error
+
+  # disable default
+  no-unused-vars: off
+  no-console: off
+  no-unreachable: off
+  require-yield: off
+  no-constant-condition: off
+  no-extra-semi: off
   '@typescript-eslint/ban-ts-comment': off
   '@typescript-eslint/no-unused-vars': off
   '@typescript-eslint/no-non-null-assertion': off
+  '@typescript-eslint/no-var-requires': off
+# overrides:
+#   - files:
+#       - '*.js'
+#       - '*.mjs'
+#       - 'bin/last-cjs-version'
+
+#     parser: espree
+#     parserOptions:
+#       ecmaVersion: 2022
+
+#     env:
+#       node: true
+
+#     extends:
+#       - 'eslint:recommended'
+#       - 'prettier'
