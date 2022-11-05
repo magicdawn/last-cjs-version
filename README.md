@@ -3,7 +3,10 @@
 > get last cjs version of a module
 
 <!-- not supported -->
-<!-- https://img.shields.io/github/workflow/status/magicdawn/last-cjs-version/ci/master -->
+<!-- https://img.shields.io/github/workflow/status/magicdawn/last-cjs-version/ci.yml/master -->
+
+<!-- style -->
+<!-- https://github.com/magicdawn/last-cjs-version/actions/workflows/ci.yml/badge.svg -->
 
 [![Build Status](https://img.shields.io/github/checks-status/magicdawn/last-cjs-version/master?style=flat-square)](https://github.com/magicdawn/last-cjs-version/actions/workflows/ci.yml)
 [![Coverage Status](https://img.shields.io/codecov/c/github/magicdawn/last-cjs-version.svg?style=flat-square)](https://codecov.io/gh/magicdawn/last-cjs-version)
