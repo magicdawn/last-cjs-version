@@ -36,7 +36,7 @@ export default async function lastCjsVersion(pkg: string) {
 
       return 1
     })
-  console.log(url, versionsArr)
+  // console.log(url, versionsArr)
 
   for (const v of versionsArr) {
     const meta = versions[v]
