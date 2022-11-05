@@ -13,7 +13,7 @@ specifiers:
   '@typescript-eslint/parser': ^5.42.0
   eslint: ^8.26.0
   eslint-config-prettier: ^8.5.0
-  execa: '5'
+  execa: 5.1.1
   got: '11'
   husky: ^8.0.1
   jest: ^29.2.2

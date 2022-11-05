@@ -39,12 +39,21 @@ get last cjs version of package
 缺少 non-option 参数：传入了 0 个, 至少需要 1 个
 ```
 
-```
+```sh
 $ last-cjs-version execa
 5.1.1
 
 $ last-cjs-version got
 11.8.3
+
+$ last-cjs-version execa -m
+5
+
+$ echo pnpm add execa@`last-cjs-version -m execa`
+pnpm add execa@5
+
+# this will exec 'pnpm add execa@5'
+$ pnpm add execa@`last-cjs-version -m execa`
 ```
 
 ## API

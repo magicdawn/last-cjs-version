@@ -69,7 +69,7 @@
     ]
   },
   "dependencies": {
-    "execa": "5",
+    "execa": "5.1.1",
     "got": "11",
     "lodash": "^4.17.21",
     "proxy-agent": "^5.0.0",
