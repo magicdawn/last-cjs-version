@@ -3,15 +3,24 @@
   "version": "0.0.1",
   "description": "get last cjs version of a module ",
   "main": "index.js",
+  "bin": {
+    "last-cjs-version": "./bin/last-cjs-version"
+  },
+  "files": [
+    "lib",
+    "bin/last-cjs-version",
+    "package.json",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
   "scripts": {
     "test": "jest",
     "prepare": "husky install",
-    "test-cover": "nyc --reporter=lcov --reporter=text mocha",
+    "test-cover": "jest --coverage",
     "report-cover": "codecov",
     "build": "rm -rf lib; rm tsconfig.tsbuildinfo; tsc",
     "prepublishOnly": "npm run build",
-    "start": "ts-node ./src/index.ts",
-    "start:debug": "node --inspect-brk -r ts-node/register ./src/index.ts",
     "gen-readme": "swig render ./readme/readme.md > README.md && prettier --write README.md"
   },
   "repository": {
@@ -39,6 +48,7 @@
     "@types/lodash": "^4.14.188",
     "@types/node": "^18.11.9",
     "@types/should": "^13.0.0",
+    "@types/yargs": "^17.0.13",
     "@typescript-eslint/eslint-plugin": "^5.42.0",
     "@typescript-eslint/parser": "^5.42.0",
     "eslint": "^8.26.0",
@@ -65,6 +75,7 @@
     "lodash": "^4.17.21",
     "proxy-agent": "^5.0.0",
     "superagent": "^8.0.3",
-    "type-fest": "^3.1.0"
+    "type-fest": "^3.1.0",
+    "yargs": "^17.6.2"
   }
 }
