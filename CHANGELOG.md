@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.2 2022-11-09
+
+- remove broken `@lerepo/detect-package-manager` package
+- v0.1.1 did not publish success
+
 ## v0.1.1 2022-11-09
 
 - add `last-cjs-version add <pkg>` command

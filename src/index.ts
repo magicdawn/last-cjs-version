@@ -2,10 +2,11 @@
 
 import { commandSync } from 'execa'
 import got from 'got'
+import preferredPM from 'preferred-pm'
 import ProxyAgent from 'proxy-agent'
 import { PackageJson } from 'type-fest'
-import preferredPM from 'preferred-pm'
-import { type PackageManager } from '@lerepo/detect-package-manager' // detect function is broken, see https://github.com/lerepo/workspace-tools/issues/1
+
+type PackageManager = 'pnpm' | 'yarn' | 'npm'
 
 const agent = new ProxyAgent()
 const request = got.extend({
