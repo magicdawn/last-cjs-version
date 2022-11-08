@@ -69,9 +69,11 @@
     ]
   },
   "dependencies": {
-    "execa": "5.1.1",
+    "@lerepo/detect-package-manager": "^0.1.1",
+    "execa": "5",
     "got": "11",
     "lodash": "^4.17.21",
+    "preferred-pm": "^3.0.3",
     "proxy-agent": "^5.0.0",
     "superagent": "^8.0.3",
     "type-fest": "^3.1.0",

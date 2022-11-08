@@ -1,34 +1,45 @@
 import yargs from 'yargs'
-import lastCjsVersion from './index'
+import lastCjsVersion, { execInstallCommand, majorVersionOf } from './index'
 
 yargs
+  .help()
+  .alias({ h: 'help', v: 'version' })
+  .option('major', {
+    alias: 'm',
+    description: 'major version only',
+    type: 'boolean',
+    default: false,
+  })
   .command(
     '$0 <pkg>',
     'get last cjs version of package',
     (yargs) => {
-      return yargs
-        .positional('pkg', {
-          description: 'package name',
-          type: 'string',
-        })
-        .option('major', {
-          alias: 'm',
-          description: 'major version only',
-          type: 'boolean',
-          default: false,
-        })
+      return yargs.positional('pkg', {
+        description: 'package name',
+        type: 'string',
+      })
     },
     async (argv) => {
       const name = argv.pkg
       let v = await lastCjsVersion(name)
-
       if (argv.major) {
-        v = v.split('.')[0]
+        v = majorVersionOf(v)
       }
 
       console.log(v)
     }
   )
-  .alias({ h: 'help', v: 'version' })
-
-  .help().argv
+  .command(
+    'add <pkg>',
+    'add/install pkg',
+    (yargs) =>
+      yargs.alias({ install: 'add' }).positional('pkg', {
+        type: 'string',
+        description: 'package identifier to install',
+      }),
+    async (argv) => {
+      const name = argv.pkg
+      const version = await lastCjsVersion(name)
+      execInstallCommand(argv.pkg, version, argv.major)
+    }
+  ).argv

@@ -4,6 +4,8 @@ import { commandSync } from 'execa'
 import got from 'got'
 import ProxyAgent from 'proxy-agent'
 import { PackageJson } from 'type-fest'
+import preferredPM from 'preferred-pm'
+import { type PackageManager } from '@lerepo/detect-package-manager' // detect function is broken, see https://github.com/lerepo/workspace-tools/issues/1
 
 const agent = new ProxyAgent()
 const request = got.extend({
@@ -45,4 +47,26 @@ export default async function lastCjsVersion(pkg: string) {
   }
 
   return versionsArr.at(-1)
+}
+
+export function majorVersionOf(version: string) {
+  return version.split('.')?.[0] ?? ''
+}
+
+export async function execInstallCommand(pkg: string, version: string, major: boolean) {
+  const versionPart = major ? majorVersionOf(version) : `^${version}`
+  const pkgDef = `${pkg}@${versionPart}`
+
+  const cmds: Record<PackageManager, string> = {
+    pnpm: `pnpm add ${pkgDef}`,
+    yarn: `yarn add ${pkgDef}`,
+    npm: `npm install ${pkgDef}`,
+  }
+
+  // decide package manager
+  const found: PackageManager = (await preferredPM(process.cwd()))?.name || 'npm'
+  const cmd = cmds[found]
+  console.log('[last-cjs-version] detected package manager: %s', found)
+  console.log('[last-cjs-version] executing: %s\n', cmd)
+  commandSync(cmd, { stdio: 'inherit' })
 }
