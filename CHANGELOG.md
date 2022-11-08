@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.1.1 2022-11-09
+
+- add `last-cjs-version add <pkg>` command
+
 ## v0.1.0 2022-11-05
 
 - fix version sort logic, fix ci test

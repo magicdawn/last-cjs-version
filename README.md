@@ -64,6 +64,20 @@ pnpm add execa@5
 $ pnpm add execa@`last-cjs-version -m execa`
 ```
 
+### `add` command
+
+find out the version and exec install command for you
+
+```sh
+$ last-cjs-version add execa -m
+[last-cjs-version] detected package manager: pnpm
+[last-cjs-version] executing: pnpm add execa@5
+
+Already up to date
+Progress: resolved 332, reused 323, downloaded 0, added 0, done
+Done in 2.1s
+```
+
 ## API
 
 ```ts
