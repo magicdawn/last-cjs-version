@@ -2,13 +2,7 @@
 
 > get last cjs version of a module
 
-<!-- not supported -->
-<!-- https://img.shields.io/github/workflow/status/magicdawn/last-cjs-version/ci.yml/master -->
-
-<!-- style -->
-<!-- https://github.com/magicdawn/last-cjs-version/actions/workflows/ci.yml/badge.svg -->
-
-[![Build Status](https://img.shields.io/github/checks-status/magicdawn/last-cjs-version/master?style=flat-square)](https://github.com/magicdawn/last-cjs-version/actions/workflows/ci.yml)
+[![Build Status](https://img.shields.io/github/workflow/status/magicdawn/last-cjs-version/ci/main?style=flat-square)](https://github.com/magicdawn/last-cjs-version/actions/workflows/ci.yml)
 [![Coverage Status](https://img.shields.io/codecov/c/github/magicdawn/last-cjs-version.svg?style=flat-square)](https://codecov.io/gh/magicdawn/last-cjs-version)
 [![npm version](https://img.shields.io/npm/v/last-cjs-version.svg?style=flat-square)](https://www.npmjs.com/package/last-cjs-version)
 [![npm downloads](https://img.shields.io/npm/dm/last-cjs-version.svg?style=flat-square)](https://www.npmjs.com/package/last-cjs-version)
