@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.2.0 2022-12-04
+
+- support multiple package name with `last-cjs-version add pkg1 pkg2 ...`
+
 ## v0.1.2 2022-11-09
 
 - remove broken `@lerepo/detect-package-manager` package
