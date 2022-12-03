@@ -1,4 +1,4 @@
-# name: Node.js CI
+name: ci
 
 on:
   - push
@@ -20,5 +20,8 @@ jobs:
 
       - run: pnpm install
 
+      # test
       - run: pnpm test-cover
+
+      # test:report
       - uses: codecov/codecov-action@v3
