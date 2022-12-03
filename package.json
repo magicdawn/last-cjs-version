@@ -65,12 +65,12 @@
     ]
   },
   "dependencies": {
+    "chalk": "4",
     "execa": "5",
     "got": "11",
     "lodash": "^4.17.21",
     "preferred-pm": "^3.0.3",
     "proxy-agent": "^5.0.0",
-    "superagent": "^8.0.5",
     "type-fest": "^3.3.0",
     "yargs": "^17.6.2"
   }

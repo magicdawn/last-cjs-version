@@ -1,10 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
+import { assert } from 'console'
 import { commandSync } from 'execa'
 import got from 'got'
 import preferredPM from 'preferred-pm'
 import ProxyAgent from 'proxy-agent'
 import { PackageJson } from 'type-fest'
+import { formatCmd } from './utils'
 
 type PackageManager = 'pnpm' | 'yarn' | 'npm'
 
@@ -54,20 +56,29 @@ export function majorVersionOf(version: string) {
   return version.split('.')?.[0] ?? ''
 }
 
-export async function execInstallCommand(pkg: string, version: string, major: boolean) {
-  const versionPart = major ? majorVersionOf(version) : `^${version}`
-  const pkgDef = `${pkg}@${versionPart}`
+export async function execInstallCommand(packages: Record<string, string>, major: boolean) {
+  assert(Object.keys(packages).length > 0)
 
+  const pkgDefs = []
+  for (const [pkg, version] of Object.entries(packages)) {
+    const versionPart = major ? majorVersionOf(version) : `^${version}`
+    const pkgDef = `${pkg}@${versionPart}`
+    pkgDefs.push(pkgDef)
+  }
+
+  const pkgDefStr = pkgDefs.join(' ')
   const cmds: Record<PackageManager, string> = {
-    pnpm: `pnpm add ${pkgDef}`,
-    yarn: `yarn add ${pkgDef}`,
-    npm: `npm install ${pkgDef}`,
+    pnpm: `pnpm add ${pkgDefStr}`,
+    yarn: `yarn add ${pkgDefStr}`,
+    npm: `npm install ${pkgDefStr}`,
   }
 
   // decide package manager
   const found: PackageManager = (await preferredPM(process.cwd()))?.name || 'npm'
   const cmd = cmds[found]
+
   console.log('[last-cjs-version] detected package manager: %s', found)
-  console.log('[last-cjs-version] executing: %s\n', cmd)
+  console.log(formatCmd(cmd))
+
   commandSync(cmd, { stdio: 'inherit' })
 }

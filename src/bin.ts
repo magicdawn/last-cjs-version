@@ -30,16 +30,22 @@ yargs
     }
   )
   .command(
-    'add <pkg>',
+    'add <pkg..>',
     'add/install pkg',
     (yargs) =>
-      yargs.alias({ install: 'add' }).positional('pkg', {
+      yargs.alias({ install: 'add' }).array('pkg').positional('pkg', {
+        array: true,
         type: 'string',
         description: 'package identifier to install',
       }),
     async (argv) => {
-      const name = argv.pkg
-      const version = await lastCjsVersion(name)
-      execInstallCommand(argv.pkg, version, argv.major)
+      const names = argv.pkg
+      const versions = await Promise.all(names.map((name) => lastCjsVersion(name)))
+      const packages = names.reduce((packages, name, index) => {
+        packages[name] = versions[index]
+        return packages
+      }, {})
+
+      return execInstallCommand(packages, argv.major)
     }
   ).argv
