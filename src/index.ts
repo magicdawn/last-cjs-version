@@ -16,7 +16,9 @@ const request = got.extend({
   timeout: 30e3,
 })
 
-export default async function lastCjsVersion(pkg: string) {
+export default lastCjsVersion
+
+export async function lastCjsVersion(pkg: string) {
   let registry = 'https://registry.npmjs.org'
   const configedRegistry = commandSync('npm config get registry')
   if (configedRegistry.stdout.trim()) {

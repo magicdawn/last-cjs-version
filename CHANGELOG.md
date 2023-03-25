@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.3.0 2023-03-26
+
+- export default `lastCjsVersion` as named export too. for https://github.com/microsoft/TypeScript/issues/52086
+
 ## v0.2.1 2023-03-26
 
 - fix pakcage entry `main` / `types`
