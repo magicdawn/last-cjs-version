@@ -1,6 +1,6 @@
 {
   "name": "last-cjs-version",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "get last cjs version of a module ",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
