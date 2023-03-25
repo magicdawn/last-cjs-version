@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.2.1 2023-03-26
+
+- fix pakcage entry `main` / `types`
+
 ## v0.2.0 2022-12-04
 
 - support multiple package name with `last-cjs-version add pkg1 pkg2 ...`
