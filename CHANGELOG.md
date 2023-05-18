@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.4.0 2023-05-18
+
+- chore: update deps
+- feat: support multiple pkg for query command
+
 ## v0.3.0 2023-03-26
 
 - export default `lastCjsVersion` as named export too. for https://github.com/microsoft/TypeScript/issues/52086
