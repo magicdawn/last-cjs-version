@@ -10,23 +10,45 @@ yargs
     type: 'boolean',
     default: false,
   })
+  .option('verbose', {
+    alias: 'V',
+    description: 'show verbose output',
+    type: 'boolean',
+    default: false,
+  })
   .command(
-    '$0 <pkg>',
+    '$0 <pkg..>',
     'get last cjs version of package',
     (yargs) => {
       return yargs.positional('pkg', {
-        description: 'package name',
+        description: 'package-name or package-names',
         type: 'string',
       })
     },
     async (argv) => {
-      const name = argv.pkg
-      let v = await lastCjsVersion(name)
-      if (argv.major) {
-        v = majorVersionOf(v)
-      }
+      const names: string[] = argv.pkg as unknown as string[]
 
-      console.log(v)
+      const versions = await Promise.all(
+        names.map(async (name) => {
+          let v = await lastCjsVersion(name)
+          if (argv.major) {
+            v = majorVersionOf(v)
+          }
+          return v
+        })
+      )
+
+      // verbose output
+      if (argv.verbose) {
+        versions.forEach((v, index) => {
+          console.log(`${names[index]} => ${v}`)
+        })
+        return
+      }
+      // simple output
+      else {
+        console.log(versions.join(' '))
+      }
     }
   )
   .command(

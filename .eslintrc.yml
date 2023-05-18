@@ -28,7 +28,7 @@ rules:
 
   # brace
   curly: [error, multi-line]
-  brace-style: error
+  brace-style: off
 
   # disable default
   no-unused-vars: off

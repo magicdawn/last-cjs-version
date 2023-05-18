@@ -4,7 +4,7 @@ import { assert } from 'console'
 import { commandSync } from 'execa'
 import got from 'got'
 import preferredPM from 'preferred-pm'
-import ProxyAgent from 'proxy-agent'
+import { ProxyAgent } from 'proxy-agent'
 import { PackageJson } from 'type-fest'
 import { formatCmd } from './utils'
 
@@ -20,9 +20,13 @@ export default lastCjsVersion
 
 export async function lastCjsVersion(pkg: string) {
   let registry = 'https://registry.npmjs.org'
-  const configedRegistry = commandSync('npm config get registry')
-  if (configedRegistry.stdout.trim()) {
-    registry = configedRegistry.stdout.trim()
+  try {
+    const configedRegistry = commandSync('npm config get registry')
+    if (configedRegistry.stdout.trim()) {
+      registry = configedRegistry.stdout.trim()
+    }
+  } catch (e) {
+    // noop
   }
 
   if (!registry.endsWith('/')) registry += '/'
